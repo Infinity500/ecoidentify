@@ -2,7 +2,9 @@ import streamlit as st
 from roboflow import Roboflow
 import tempfile
 
-rf = Roboflow(api_key="Os2ZluVVWRriNOylgb1Z")
+api_key = st.secrets["ROBOFLOW_API_KEY"]
+
+rf = Roboflow(api_key)
 project = rf.workspace().project("ecoidentify-pubxp")
 model = project.version("1").model
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
